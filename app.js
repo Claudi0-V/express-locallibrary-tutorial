@@ -3,14 +3,19 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const mongoose = require('mongoose')
-const dbURI = 'mongodb+srv://Claudi0-Dev:AWpmmFSjG6Q37Vp@learning.sfzzw.mongodb.net/node-tuts?retryWrites=true&w=majority'
+const mongoose = require('mongoose');
+require('dotenv').config();
+
+const dbURI = process.env.DB_URI;
+
+const app = express();
+
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(result => app.listen(3000)).catch(err => console.log(err))
 
 const indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
