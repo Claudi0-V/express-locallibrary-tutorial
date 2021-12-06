@@ -13,8 +13,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => app.listen(3000)).catch(err => console.log(err))
 
 const indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
+const usersRouter = require('./routes/users');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
